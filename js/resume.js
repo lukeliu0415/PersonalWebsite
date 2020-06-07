@@ -14,9 +14,17 @@ TxtRotate.prototype.tick = function() {
   var fullTxt = this.toRotate[i];
 
   if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
+    if (this.txt === 'proud Canadian 🇨🇦') {
+      this.txt = fullTxt.substring(0, 13);
+    } else {
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    }
   } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
+    if (this.txt === 'proud Canadian ') {
+      this.txt = fullTxt.substring(0, fullTxt.length - 1);
+    } else {
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
   }
 
   this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
